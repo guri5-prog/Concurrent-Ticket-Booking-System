@@ -1,8 +1,9 @@
 import { acquireLock, releaseLock } from "../../utils/lock.util.js";
+import { v4 as uuidv4 } from 'uuid';
 
 export async function bookSeatService() {
   const lockKey = "lock:booking";
-  const lockToken = Date.now().toString();
+  const lockToken = uuidv4();
 
   const lockAcquired = await acquireLock(lockKey, lockToken);
 
